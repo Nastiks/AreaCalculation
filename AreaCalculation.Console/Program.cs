@@ -11,6 +11,7 @@ namespace AreaCalculation.ConsoleApp
 
             Triangle triangle = new Triangle(10, 9, 8);
             Console.WriteLine(triangle.Area);
+            Console.WriteLine(triangle.IsRightTriangle);
         }
     }
 }

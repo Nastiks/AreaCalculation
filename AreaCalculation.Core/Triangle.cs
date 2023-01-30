@@ -32,11 +32,7 @@
             double maxSide = Math.Max(FirstSide, Math.Max(SecondSide, ThirdSide));
             double minSide = Math.Min(FirstSide, Math.Min(SecondSide, ThirdSide));
             double averageSide = (FirstSide + SecondSide + ThirdSide) - maxSide - minSide;
-            if (maxSide == Math.Sqrt((Math.Pow(averageSide, 2)) + (Math.Pow(minSide, 2))))
-            {
-                return true;
-            }
-            return false;
+            return maxSide == Math.Sqrt((Math.Pow(averageSide, 2)) + (Math.Pow(minSide, 2)));
         }
     }
 }

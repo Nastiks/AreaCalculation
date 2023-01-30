@@ -40,5 +40,20 @@ namespace AreaCalculation.Tests
             var exception = Assert.Throws<ArgumentException>(() => new Triangle(1, 3, 5));
             Assert.That(exception, Is.Not.Null);
         }
+
+        [Test]
+        public void IsRightTriangle_WitnCorrectSides_ReturnSuccess()
+        {
+            Triangle triangle = new Triangle(3, 4, 5);
+            Assert.That(triangle.IsRightTriangle, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void IsRightTriangle_WitnIncorrectSides_ReturnSuccess()
+        {
+            Triangle triangle = new Triangle(10, 9, 8);
+            Assert.That(triangle.IsRightTriangle, Is.EqualTo(false));
+        }
+
     }
 }
