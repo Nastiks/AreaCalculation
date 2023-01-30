@@ -10,9 +10,13 @@ namespace AreaCalculation.Core
             {
                 throw new ArgumentNullException(nameof(figureClassType));
             }
+            if (!typeof(IFigure).IsAssignableFrom(figureClassType))
+            {
+                throw new TypeLoadException(string.Format("Type {0} must be inherited from {1}", 
+                    figureClassType, typeof(IFigure).FullName));
+            }
 
             FigureClassType = figureClassType;
-            Name = figureClassType.Name;
             IEnumerable<ConstructorInfo> ctors = figureClassType.GetConstructors();
             if (ctors.Count() > 1)
             {
@@ -27,7 +31,7 @@ namespace AreaCalculation.Core
             Arguments = ctor.GetParameters();
         }
 
-        public string Name { get; }
+        public string Name => FigureClassType.Name;
         public Type FigureClassType { get; }
         public IEnumerable<ParameterInfo> Arguments { get; }
 
