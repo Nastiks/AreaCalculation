@@ -35,7 +35,7 @@ namespace AreaCalculation.Core
         public Type FigureClassType { get; }
         public IEnumerable<ParameterInfo> Arguments { get; }
 
-        private IEnumerable<ConstructorInfo> TakeOneByAttribute(IEnumerable<ConstructorInfo> ctors)
+        private static IEnumerable<ConstructorInfo> TakeOneByAttribute(IEnumerable<ConstructorInfo> ctors)
         {
             foreach (var ctor in ctors)
             {
