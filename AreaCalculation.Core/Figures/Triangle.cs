@@ -23,15 +23,20 @@
         public bool IsRight => DetermineRightTriangle();
         private double CalculateArea()
         {
-            double semiPerimeter = (FirstSide + SecondSide + ThirdSide) / 2;
+            double semiPerimeter = CalculatePerimeter() / 2;
             return Math.Sqrt(semiPerimeter * (semiPerimeter - FirstSide) * (semiPerimeter - SecondSide) * (semiPerimeter - ThirdSide));
         }
         private bool DetermineRightTriangle()
         {
             double maxSide = Math.Max(FirstSide, Math.Max(SecondSide, ThirdSide));
             double minSide = Math.Min(FirstSide, Math.Min(SecondSide, ThirdSide));
-            double averageSide = FirstSide + SecondSide + ThirdSide - maxSide - minSide;
+            double averageSide = CalculatePerimeter() - maxSide - minSide;
             return maxSide == Math.Sqrt(Math.Pow(averageSide, 2) + Math.Pow(minSide, 2));
+        }
+
+        private double CalculatePerimeter()
+        {
+            return FirstSide + SecondSide + ThirdSide;
         }
     }
 }
