@@ -4,34 +4,28 @@
     {
         public Triangle(double firstSide, double secondSide, double thirdSide)
         {
-            FirstSide= firstSide;
-            SecondSide= secondSide;
-            ThirdSide= thirdSide;
+            bool isСorrect = firstSide + secondSide > thirdSide &&
+                             firstSide + thirdSide > secondSide &&
+                             secondSide + thirdSide > firstSide;
+            if (!isСorrect)
+            {
+                throw new ArgumentException("The specified triangle is incorrect");
+            }
+
+            FirstSide = firstSide;
+            SecondSide = secondSide;
+            ThirdSide = thirdSide;
         }
         public double FirstSide { get; set; }
         public double SecondSide { get; set; }
         public double ThirdSide { get; set; }
         public double Area { get; set; }
-
-        public bool CheckForExistence()
+        public double CalculateArea()
         {
-            bool rightTriangle = FirstSide + SecondSide > ThirdSide &&
-                                 FirstSide + ThirdSide > SecondSide &&
-                                 SecondSide + ThirdSide > FirstSide;
-            return rightTriangle;
-        }
-        public double CalculateTheArea()
-        {
-            if (CheckForExistence())
-            {
-                double semiPerimeter = (FirstSide + SecondSide + ThirdSide) / 2;
-                Area = Math.Sqrt(semiPerimeter * (semiPerimeter - FirstSide) * (semiPerimeter - SecondSide) * (semiPerimeter - SecondSide));
-                return Area;
-            }
-            else
-            {
-                throw new Exception("It is impossible to calculate the area of a triangle that does not exist!");
-            }
+            double semiPerimeter = (FirstSide + SecondSide + ThirdSide) / 2;
+            Area = Math.Sqrt(semiPerimeter * (semiPerimeter - FirstSide) * (semiPerimeter - SecondSide) * (semiPerimeter - ThirdSide));
+            Area = Math.Round(Area, 2);
+            return Area;
         }
     }
 }

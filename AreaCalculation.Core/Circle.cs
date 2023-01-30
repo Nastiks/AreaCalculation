@@ -1,30 +1,21 @@
-﻿namespace AreaCalculation
+﻿namespace AreaCalculation.Core
 {
-    public class Circle
+    public class Circle : IRightFigure
     {
-        public Circle(double raduis)
+        public Circle(double radius)
         {
-            Raduis = raduis;
+            if (radius <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(radius));
+            }
+            Radius = radius;
         }
-        public double Raduis { get; set; }
+        public double Radius { get; set; }
         public double Area { get; set; }
-
-        public bool CheckForExistence()
+        public double CalculateArea()
         {
-            bool rightCircle = Raduis > 0;
-            return rightCircle;
+            Area = Math.Round(Area = Math.PI + Math.Pow(Radius, 2), 2);
+            return Area;
         }
-        public double CalculateTheArea()
-        {
-            if(CheckForExistence())
-            {
-                Area = Math.Round(Area = Math.PI + Math.Pow(Raduis, 2), 2);
-                return Area;
-            }
-            else
-            {
-                throw new Exception($"It is impossible to calculate the area of a circle whose radius is {Raduis}!");
-            }
-        } 
     }
 }
