@@ -18,16 +18,20 @@ namespace AreaCalculation.Core
 
             FigureClassType = figureClassType;
             IEnumerable<ConstructorInfo> ctors = figureClassType.GetConstructors();
+            ConstructorInfo? ctor;
             if (ctors.Count() > 1)
             {
-                ctors = TakeOneByAttribute(ctors);
-                if (!ctors.Any())
+                ctor = FindOneByAttribute(ctors);
+                if (ctor == null)
                 {
                     throw new Exception($"{figureClassType.FullName} contains a more than one constructor. " +
                         $"You can mark required constructor with {nameof(FigureConstructorAttribute)} attribute.");
                 }
             }
-            var ctor = ctors.First();
+            else
+            {
+                ctor = ctors.First();
+            }
             Arguments = ctor.GetParameters();
         }
 
@@ -35,16 +39,23 @@ namespace AreaCalculation.Core
         public Type FigureClassType { get; }
         public IEnumerable<ParameterInfo> Arguments { get; }
 
-        private static IEnumerable<ConstructorInfo> TakeOneByAttribute(IEnumerable<ConstructorInfo> ctors)
+        private static ConstructorInfo? FindOneByAttribute(IEnumerable<ConstructorInfo> ctors)
         {
+            ConstructorInfo? found = null;
             foreach (var ctor in ctors)
             {
-                if (ctor.GetCustomAttribute<FigureConstructorAttribute>() != null)
+                var current = ctor.GetCustomAttribute<FigureConstructorAttribute>();
+                if (current != null)
                 {
-                    return new ConstructorInfo[] { ctor };
+                    if (found != null)
+                    {
+                        throw new Exception(string.Format("{0} cannot be more than one in the class.",
+                            nameof(FigureConstructorAttribute)));
+                    }
+                    found = ctor;
                 }
             }
-            return Enumerable.Empty<ConstructorInfo>();
+            return found;
         }
 
         public IFigure Create(params object[] args)
