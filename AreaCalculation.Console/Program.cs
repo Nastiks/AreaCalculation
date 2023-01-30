@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Circle circle = new Circle(15);
+            Console.WriteLine(circle.CalculateTheArea(circle.Raduis));
         }
     }
 }
