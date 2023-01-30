@@ -9,10 +9,22 @@
         public double Raduis { get; set; }
         public double Area { get; set; }
 
-        public double CalculateTheArea(double raduis)
+        public bool CheckForExistence()
         {
-            Area = raduis != 0 ? Math.Round(Area = Math.PI + Math.Pow(Raduis, 2), 2) : default;
-            return Area;
+            bool rightCircle = Raduis > 0;
+            return rightCircle;
+        }
+        public double CalculateTheArea()
+        {
+            if(CheckForExistence())
+            {
+                Area = Math.Round(Area = Math.PI + Math.Pow(Raduis, 2), 2);
+                return Area;
+            }
+            else
+            {
+                throw new Exception($"It is impossible to calculate the area of a circle whose radius is {Raduis}!");
+            }
         } 
     }
 }
