@@ -1,4 +1,5 @@
 ﻿using AreaCalculation.Core;
+using AreaCalculation.Core.Figures;
 
 namespace AreaCalculation.ConsoleApp
 {
@@ -11,7 +12,7 @@ namespace AreaCalculation.ConsoleApp
 
             Triangle triangle = new Triangle(10, 9, 8);
             Console.WriteLine(triangle.Area);
-            Console.WriteLine(triangle.IsRightTriangle);
+            Console.WriteLine(triangle.IsRight);
 
             AreaCalculator areaCalculator = new AreaCalculator();
             var figures = areaCalculator.GetFigures();

@@ -1,16 +1,8 @@
-﻿using System.Reflection;
-
-namespace AreaCalculation.Core
+﻿namespace AreaCalculation.Core
 {
-    public class AreaCalculator
+    public static class AreaCalculator
     {
-        private readonly IFigure _figure;
-        public AreaCalculator()
-        {
-
-        }
-
-        public IEnumerable<FigureClassInfo> GetFigures()
+        public static IEnumerable<FigureClassInfo> GetFigures()
         {
             IEnumerable<Type> figureTypes = FindFigureTypes();
             if (!figureTypes.Any())
@@ -23,8 +15,8 @@ namespace AreaCalculation.Core
         private static IEnumerable<Type> FindFigureTypes()
         {
             var found = AppDomain.CurrentDomain.GetAssemblies()
-                                   .SelectMany(x => x.GetTypes())
-                                   .Where(t => typeof(IFigure).IsAssignableFrom(t) && t.IsClass);
+                                 .SelectMany(x => x.GetTypes())
+                                 .Where(t => typeof(IFigure).IsAssignableFrom(t) && t.IsClass);
             return found ?? Enumerable.Empty<Type>();
         }
     }

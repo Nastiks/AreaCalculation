@@ -1,4 +1,4 @@
-﻿namespace AreaCalculation.Core
+﻿namespace AreaCalculation.Core.Figures
 {
     public class Circle : IFigure
     {

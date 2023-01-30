@@ -1,4 +1,4 @@
-using AreaCalculation.Core;
+using AreaCalculation.Core.Figures;
 
 namespace AreaCalculation.Tests
 {

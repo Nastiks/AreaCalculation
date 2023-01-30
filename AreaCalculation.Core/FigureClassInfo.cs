@@ -14,7 +14,7 @@ namespace AreaCalculation.Core
             FigureClassType = figureClassType;
             Name = figureClassType.Name;
             IEnumerable<ConstructorInfo> ctors = figureClassType.GetConstructors();
-            if(ctors.Count() > 1)
+            if (ctors.Count() > 1)
             {
                 ctors = TakeOneByAttribute(ctors);
                 if (!ctors.Any())
@@ -26,6 +26,11 @@ namespace AreaCalculation.Core
             var ctor = ctors.First();
             Arguments = ctor.GetParameters();
         }
+
+        public string Name { get; }
+        public Type FigureClassType { get; }
+        public IEnumerable<ParameterInfo> Arguments { get; }
+
         private IEnumerable<ConstructorInfo> TakeOneByAttribute(IEnumerable<ConstructorInfo> ctors)
         {
             foreach (var ctor in ctors)
@@ -37,9 +42,7 @@ namespace AreaCalculation.Core
             }
             return Enumerable.Empty<ConstructorInfo>();
         }
-        public string Name { get; }
-        public IEnumerable<ParameterInfo> Arguments { get; }
-        public Type FigureClassType { get; }
+
         public IFigure Create(params object[] args)
         {
             if (args.Length != Arguments.Count())

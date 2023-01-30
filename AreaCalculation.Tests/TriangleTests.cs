@@ -1,4 +1,4 @@
-using AreaCalculation.Core;
+using AreaCalculation.Core.Figures;
 
 namespace AreaCalculation.Tests
 {
@@ -45,14 +45,14 @@ namespace AreaCalculation.Tests
         public void IsRightTriangle_WitnCorrectSides_ReturnSuccess()
         {
             Triangle triangle = new Triangle(3, 4, 5);
-            Assert.That(triangle.IsRightTriangle, Is.EqualTo(true));
+            Assert.That(triangle.IsRight, Is.EqualTo(true));
         }
 
         [Test]
         public void IsRightTriangle_WitnIncorrectSides_ReturnSuccess()
         {
             Triangle triangle = new Triangle(10, 9, 8);
-            Assert.That(triangle.IsRightTriangle, Is.EqualTo(false));
+            Assert.That(triangle.IsRight, Is.EqualTo(false));
         }
     }
 }
