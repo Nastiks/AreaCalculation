@@ -7,10 +7,10 @@ namespace AreaCalculation.ConsoleApp
         static void Main(string[] args)
         {
             Circle circle = new Circle(15);
-            Console.WriteLine(circle.CalculateArea());
+            Console.WriteLine(circle.Area);
 
             Triangle triangle = new Triangle(10, 9, 8);
-            Console.WriteLine(triangle.CalculateArea());
+            Console.WriteLine(triangle.Area);
         }
     }
 }

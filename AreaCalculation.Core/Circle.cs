@@ -10,12 +10,11 @@
             }
             Radius = radius;
         }
-        public double Radius { get; set; }
-        public double Area { get; set; }
-        public double CalculateArea()
+        public double Radius { get; }
+        public double Area => CalculateArea();
+        private double CalculateArea()
         {
-            Area = Math.Round(Area = Math.PI + Math.Pow(Radius, 2), 2);
-            return Area;
+            return Math.PI + Math.Pow(Radius, 2);
         }
     }
 }

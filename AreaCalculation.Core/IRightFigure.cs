@@ -1,8 +1,7 @@
 ﻿namespace AreaCalculation.Core
 {
-    internal interface IRightFigure
+    public interface IRightFigure
     {
-        public double Area { get; set; }
-        public double CalculateArea();
+        double Area { get; }
     }
 }

@@ -16,16 +16,14 @@
             SecondSide = secondSide;
             ThirdSide = thirdSide;
         }
-        public double FirstSide { get; set; }
-        public double SecondSide { get; set; }
-        public double ThirdSide { get; set; }
-        public double Area { get; set; }
-        public double CalculateArea()
+        public double FirstSide { get;}
+        public double SecondSide { get;}
+        public double ThirdSide { get;}
+        public double Area => CalculateArea();
+        private double CalculateArea()
         {
             double semiPerimeter = (FirstSide + SecondSide + ThirdSide) / 2;
-            Area = Math.Sqrt(semiPerimeter * (semiPerimeter - FirstSide) * (semiPerimeter - SecondSide) * (semiPerimeter - ThirdSide));
-            Area = Math.Round(Area, 2);
-            return Area;
+            return Math.Sqrt(semiPerimeter * (semiPerimeter - FirstSide) * (semiPerimeter - SecondSide) * (semiPerimeter - ThirdSide));
         }
     }
 }
