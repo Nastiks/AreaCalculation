@@ -6,7 +6,7 @@ namespace AreaCalculation.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Circle circle = new Circle(15);
+            Circle circle = new Circle(5);
             Console.WriteLine(circle.Area);
 
             Triangle triangle = new Triangle(10, 9, 8);

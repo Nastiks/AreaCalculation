@@ -1,6 +1,6 @@
 ﻿namespace AreaCalculation.Core
 {
-    public class Circle : IRightFigure
+    public class Circle : IFigure
     {
         public Circle(double radius)
         {

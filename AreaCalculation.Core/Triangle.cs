@@ -1,6 +1,6 @@
 ﻿namespace AreaCalculation.Core
 {
-    public class Triangle : IRightFigure
+    public class Triangle : IFigure
     {
         public Triangle(double firstSide, double secondSide, double thirdSide)
         {
