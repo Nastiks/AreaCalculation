@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AreaCalculation.Core
+﻿namespace AreaCalculation.Core
 {
-    public class Triangle
+    public class Triangle : IRightFigure
     {
         public Triangle(double firstSide, double secondSide, double thirdSide)
         {
