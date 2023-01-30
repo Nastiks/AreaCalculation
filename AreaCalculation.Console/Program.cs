@@ -5,16 +5,17 @@ namespace AreaCalculation.ConsoleApp
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Available figures:");
             var figures = AreaCalculator.GetFigures();
 
-            var print = string.Join(Environment.NewLine, figures
+            string print = string.Join(Environment.NewLine, figures
                 .Select((x, index) => 
                 string.Format("{0}: {1}, args: {2}", index + 1, x.Name, string.Join(", ", 
                 x.Arguments.Select(x => string.Format("{0} - {1}", 
                 x.Name, x.ParameterType.Name))))));
+
             Console.WriteLine(print);
             Console.WriteLine("Enter figure number:");
             int selected = int.Parse(Console.ReadLine()!) - 1;
