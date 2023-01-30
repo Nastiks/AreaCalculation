@@ -54,6 +54,5 @@ namespace AreaCalculation.Tests
             Triangle triangle = new Triangle(10, 9, 8);
             Assert.That(triangle.IsRightTriangle, Is.EqualTo(false));
         }
-
     }
 }
