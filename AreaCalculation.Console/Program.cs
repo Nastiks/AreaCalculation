@@ -1,4 +1,6 @@
-﻿namespace AreaCalculation.ConsoleApp
+﻿using AreaCalculation.Core;
+
+namespace AreaCalculation.ConsoleApp
 {
     internal class Program
     {
@@ -6,6 +8,9 @@
         {
             Circle circle = new Circle(15);
             Console.WriteLine(circle.CalculateTheArea(circle.Raduis));
+
+            Triangle triangle = new Triangle(14, 5, 8);
+            Console.WriteLine(triangle.CalculateTheArea());
         }
     }
 }
