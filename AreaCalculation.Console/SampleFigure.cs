@@ -1,4 +1,5 @@
 ﻿using AreaCalculation.Core;
+using AreaCalculation.Core.Attributes;
 
 namespace AreaCalculation.ConsoleApp
 {
