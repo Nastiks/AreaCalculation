@@ -27,7 +27,8 @@
             double maxSide = Math.Max(FirstSide, Math.Max(SecondSide, ThirdSide));
             double minSide = Math.Min(FirstSide, Math.Min(SecondSide, ThirdSide));
             double averageSide = CalculatePerimeter() - maxSide - minSide;
-            return maxSide == Math.Sqrt(Math.Pow(averageSide, 2) + Math.Pow(minSide, 2));
+            const double tolerance = 0.000000001;
+            return Math.Abs(Math.Pow(maxSide, 2) - (Math.Pow(averageSide, 2) + Math.Pow(minSide, 2))) < tolerance;
         }
 
         private double CalculatePerimeter()
