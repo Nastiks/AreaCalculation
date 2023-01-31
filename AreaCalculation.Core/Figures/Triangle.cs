@@ -4,17 +4,15 @@
     {
         public Triangle(double firstSide, double secondSide, double thirdSide)
         {
-            bool isСorrect = firstSide + secondSide > thirdSide &&
-                             firstSide + thirdSide > secondSide &&
-                             secondSide + thirdSide > firstSide;
-            if (!isСorrect)
+            if(Validate(firstSide, secondSide, thirdSide))
             {
-                throw new ArgumentException("The specified triangle is incorrect");
+                if(CheckExistence(firstSide, secondSide, thirdSide))
+                {
+                    FirstSide = firstSide;
+                    SecondSide = secondSide;
+                    ThirdSide = thirdSide;
+                }
             }
-
-            FirstSide = firstSide;
-            SecondSide = secondSide;
-            ThirdSide = thirdSide;
         }
         public double FirstSide { get; }
         public double SecondSide { get; }
@@ -37,6 +35,18 @@
         private double CalculatePerimeter()
         {
             return FirstSide + SecondSide + ThirdSide;
+        }
+        private static bool Validate(double firstSide, double secondSide, double thirdSide)
+        {
+            bool isValid = firstSide > 0 && secondSide > 0 && thirdSide > 0;
+            return isValid ? isValid : throw new ArgumentOutOfRangeException("The sides of a triangle cannot be less than or equal to zero.");
+        }
+        private static bool CheckExistence(double firstSide, double secondSide, double thirdSide)
+        {
+            bool isСorrect = firstSide + secondSide > thirdSide &&
+                             firstSide + thirdSide > secondSide &&
+                             secondSide + thirdSide > firstSide;
+            return isСorrect ? isСorrect :  throw new ArgumentException("The specified triangle is incorrect"); ;
         }
     }
 }
