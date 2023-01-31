@@ -1,6 +1,8 @@
-﻿namespace AreaCalculation.Core
+﻿using AreaCalculation.Core.Reflection;
+
+namespace AreaCalculation.Core.Helpers
 {
-    public static class AreaCalculator
+    public static class FigureHelper
     {
         public static IEnumerable<FigureClassInfo> GetFigures()
         {

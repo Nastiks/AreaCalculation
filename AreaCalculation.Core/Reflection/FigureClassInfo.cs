@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
+using AreaCalculation.Core.Attributes;
 
-namespace AreaCalculation.Core
+namespace AreaCalculation.Core.Reflection
 {
     public class FigureClassInfo
     {
@@ -12,7 +13,7 @@ namespace AreaCalculation.Core
             }
             if (!typeof(IFigure).IsAssignableFrom(figureClassType))
             {
-                throw new TypeLoadException(string.Format("Type {0} must be inherited from {1}", 
+                throw new TypeLoadException(string.Format("Type {0} must be inherited from {1}",
                     figureClassType, typeof(IFigure).FullName));
             }
 

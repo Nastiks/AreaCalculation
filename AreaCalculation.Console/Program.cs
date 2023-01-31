@@ -1,5 +1,6 @@
 ﻿using AreaCalculation.Core;
 using AreaCalculation.Core.Figures;
+using AreaCalculation.Core.Helpers;
 
 namespace AreaCalculation.ConsoleApp
 {
@@ -8,7 +9,7 @@ namespace AreaCalculation.ConsoleApp
         static void Main()
         {
             Console.WriteLine("Available figures:");
-            var figures = AreaCalculator.GetFigures();
+            var figures = FigureHelper.GetFigures();
 
             string print = string.Join(Environment.NewLine, figures
                 .Select((x, index) => 
